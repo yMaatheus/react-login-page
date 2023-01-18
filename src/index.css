@@ -1,0 +1,23 @@
+:root {
+  --main-color: #ececec;
+  --secondary-color: #181725;
+  --accent-color: #12e497;
+  --error-color: #ff0000;
+  --blue: #006dfb;
+  --purple: #41197f;
+}
+
+::selection {
+  background-color: var(--accent-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3 {
+  margin-bottom: 1.5rem;
+}
