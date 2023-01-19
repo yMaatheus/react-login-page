@@ -2,7 +2,7 @@ import Joi from 'joi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { login } from '../../services/user';
-import { setToken } from '../../utils/localStorage';
+import { setToken } from '../../utils/localStorage.util';
 import styles from "./login.module.css"
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -33,7 +33,7 @@ const Login = () => {
     const { data: { token } } = await login({ userName, password });
 
     setToken(token);
-    setTimeout(() => { navigate('/') }, 1000);
+    setTimeout(() => { navigate('/') }, 500);
   }
 
   return (
@@ -41,21 +41,23 @@ const Login = () => {
       <div className={styles.login_form}>
         <h1>Login</h1>
 
-        <label htmlFor="userName">
+        <label htmlFor="userName" className={styles.label}>
           <input
             type="text"
             name="userName"
             placeholder='Login'
+            className={styles.input}
             onChange={updateUserName}
           />
         </label>
 
-        <label htmlFor="password">
+        <label htmlFor="password" className={styles.label}>
           <input
             type={isPasswordVisible ? 'text' : 'password'}
             name="password"
             id='password'
             placeholder='Password'
+            className={styles.input}
             onChange={updatePassword}
           />
           {isPasswordVisible ? (
@@ -66,7 +68,9 @@ const Login = () => {
         </label>
 
         <button
-          type='button' onClick={submitLogin}>
+          type='button'
+          className={styles.button}
+          onClick={submitLogin}>
           Login
         </button>
       </div>
